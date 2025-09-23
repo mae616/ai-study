@@ -1,0 +1,135 @@
+{
+  "name": "JavaScript (ECMAScript)",
+  "version": "ES2025 (16th Edition)",
+  "runtime": "V8/SpiderMonkey/JavaScriptCore (latest)",
+  "official_docs": [
+    "https://tc39.es/ecma262/2025/",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "https://javascript.info/"
+  ],
+  "learning_goals": {
+    "beginner": [
+      {
+        "title": "実行コンテキストの理解",
+        "outcome": "コールスタックの動作をconsole.logで追跡し、実行順序を説明できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model"
+      },
+      {
+        "title": "レキシカルスコープとクロージャ",
+        "outcome": "クロージャを使った秘密変数パターンを実装できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+      },
+      {
+        "title": "イベントループの基礎",
+        "outcome": "setTimeout/queueMicrotaskの実行順序を予測し説明できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop"
+      },
+      {
+        "title": "Promise基礎",
+        "outcome": "Promise.resolve/rejectでエラーハンドリングを実装できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+      },
+      {
+        "title": "正規表現の安全な利用",
+        "outcome": "RegExp.escapeでユーザー入力を安全に正規表現に組み込める",
+        "doc": "https://tc39.es/proposal-regexp-escape/"
+      }
+    ],
+    "core": [
+      {
+        "title": "async/awaitパターン",
+        "outcome": "エラー境界付きの非同期関数チェーンを構築できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
+      },
+      {
+        "title": "Promise.tryの活用",
+        "outcome": "Promise.tryで同期関数も非同期チェーンに統合できる",
+        "doc": "https://tc39.es/proposal-promise-try/"
+      },
+      {
+        "title": "マイクロタスクキュー",
+        "outcome": "queueMicrotaskとPromiseの実行順序を精密に制御できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"
+      },
+      {
+        "title": "並行処理パターン",
+        "outcome": "Promise.all/race/allSettledを適切に使い分けできる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#static_methods"
+      },
+      {
+        "title": "Set操作メソッド",
+        "outcome": "intersection/difference/isSubsetOfを使った集合演算ができる",
+        "doc": "https://tc39.es/proposal-set-methods/"
+      },
+      {
+        "title": "モジュールスコープ",
+        "outcome": "Top-level awaitを使ったモジュール初期化を実装できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+      }
+    ],
+    "applied": [
+      {
+        "title": "リソース管理（using宣言）",
+        "outcome": "using/await usingでリソースの確実なクリーンアップを実装できる",
+        "doc": "https://tc39.es/proposal-explicit-resource-management/"
+      },
+      {
+        "title": "Iterator Helpers",
+        "outcome": "Iterator.from().map().filter().takeで遅延評価チェーンを構築できる",
+        "doc": "https://tc39.es/proposal-iterator-helpers/"
+      },
+      {
+        "title": "Array.fromAsync",
+        "outcome": "非同期データソースから効率的に配列を生成できる",
+        "doc": "https://tc39.es/proposal-array-from-async/"
+      },
+      {
+        "title": "AsyncContext（Stage 2）",
+        "outcome": "Node.js AsyncLocalStorageで非同期チェーンの状態を管理できる（標準化前）",
+        "doc": "https://github.com/tc39/proposal-async-context"
+      },
+      {
+        "title": "非同期イテレータ",
+        "outcome": "for await...ofでストリームデータを処理できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of"
+      },
+      {
+        "title": "Worker/SharedArrayBuffer",
+        "outcome": "Web Workersでメインスレッドをブロックしない処理を実装できる",
+        "doc": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
+      }
+    ]
+  },
+  "target_product": "非同期タスクキュー管理システム with リソース管理",
+  "dev_env": {
+    "os": "Ubuntu 22.04 LTS (DevContainer)",
+    "package_manager": "pnpm",
+    "editor": "Claude Code / Cursor"
+  },
+  "version_notes": {
+    "lts": true,
+    "breaking_changes": [],
+    "deprecated": [
+      "varキーワード",
+      "コールバック地獄パターン",
+      "arguments object（rest parameters推奨）"
+    ],
+    "new_features": [
+      "Iterator Helpers (Stage 4)",
+      "Promise.try (Stage 4)",
+      "Set methods: intersection, difference等 (Stage 4)",
+      "RegExp.escape (Stage 4)",
+      "Array.fromAsync (Stage 4)",
+      "Error.isError (Stage 4)",
+      "using宣言によるリソース管理 (Stage 4)"
+    ],
+    "pending_features": [
+      "AsyncContext (Stage 2) - Node.jsのAsyncLocalStorageとして先行実装"
+    ]
+  },
+  "sources": [
+    "https://tc39.es/ecma262/2025/",
+    "https://github.com/tc39/proposals",
+    "https://2ality.com/2025/06/ecmascript-2025.html"
+  ]
+}
