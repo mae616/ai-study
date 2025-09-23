@@ -1,0 +1,125 @@
+{
+  "name": "React",
+  "version": "19.1",
+  "runtime": "Node.js 18+ (推奨: Node.js 20 LTS)",
+  "official_docs": [
+    "https://react.dev/",
+    "https://react.dev/blog/2024/12/05/react-19",
+    "https://react.dev/versions"
+  ],
+  "learning_goals": {
+    "beginner": [
+      {
+        "title": "環境構築とプロジェクト作成",
+        "outcome": "Next.js/Viteを使用してReact+TypeScriptプロジェクトを初期設定し起動できる",
+        "doc": "https://react.dev/learn/start-a-new-react-project"
+      },
+      {
+        "title": "JSXと基本コンポーネント",
+        "outcome": "関数コンポーネントでpropsを受け取り条件分岐でUIを宣言的に記述できる",
+        "doc": "https://react.dev/learn/writing-markup-with-jsx"
+      },
+      {
+        "title": "イベントハンドリング",
+        "outcome": "onClickイベントで状態を更新しUIに即座に反映できる",
+        "doc": "https://react.dev/learn/responding-to-events"
+      },
+      {
+        "title": "useState基礎",
+        "outcome": "カウンターや入力フォームの値をローカル状態として管理できる",
+        "doc": "https://react.dev/learn/state-a-components-memory"
+      },
+      {
+        "title": "リスト表示とkey",
+        "outcome": "配列からmap()でコンポーネントリストを生成しkeyを適切に設定できる",
+        "doc": "https://react.dev/learn/rendering-lists"
+      }
+    ],
+    "core": [
+      {
+        "title": "useEffect/useLayoutEffect",
+        "outcome": "API呼び出しとクリーンアップを適切なタイミングで実装できる",
+        "doc": "https://react.dev/learn/synchronizing-with-effects"
+      },
+      {
+        "title": "Actionsとフォーム",
+        "outcome": "useActionStateでサーバー送信とエラー処理を統合的に実装できる",
+        "doc": "https://react.dev/reference/rsc/use-server"
+      },
+      {
+        "title": "カスタムフック",
+        "outcome": "状態とロジックを抽出し複数コンポーネントで再利用可能にできる",
+        "doc": "https://react.dev/learn/reusing-logic-with-custom-hooks"
+      },
+      {
+        "title": "Context API",
+        "outcome": "テーマ切替やユーザー認証状態をアプリ全体で共有管理できる",
+        "doc": "https://react.dev/learn/passing-data-deeply-with-context"
+      },
+      {
+        "title": "refとDOM操作",
+        "outcome": "フォーカス管理やスクロール制御など命令的操作を実装できる",
+        "doc": "https://react.dev/learn/manipulating-the-dom-with-refs"
+      },
+      {
+        "title": "エラーバウンダリ",
+        "outcome": "コンポーネントエラーをキャッチしフォールバックUIを表示できる",
+        "doc": "https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary"
+      }
+    ],
+    "applied": [
+      {
+        "title": "Server Components",
+        "outcome": "データ取得をサーバー側で行いクライアントバンドルサイズを削減できる",
+        "doc": "https://react.dev/reference/rsc/server-components"
+      },
+      {
+        "title": "useOptimistic",
+        "outcome": "サーバー応答前にUIを楽観的に更新しUXを向上できる",
+        "doc": "https://react.dev/reference/react/useOptimistic"
+      },
+      {
+        "title": "Suspense/lazy",
+        "outcome": "ルートベースのコード分割で初期ロード時間を大幅に短縮できる",
+        "doc": "https://react.dev/reference/react/Suspense"
+      },
+      {
+        "title": "React.memo/useMemo",
+        "outcome": "不要な再レンダリングを防ぎ大規模リストのパフォーマンスを最適化できる",
+        "doc": "https://react.dev/reference/react/memo"
+      },
+      {
+        "title": "Testing Library実装",
+        "outcome": "ユーザー視点のインテグレーションテストを書き品質を保証できる",
+        "doc": "https://react.dev/learn/testing-overview"
+      }
+    ]
+  },
+  "target_product": "タスク管理アプリ（Server Actions付き）",
+  "dev_env": {
+    "os": "macOS",
+    "package_manager": "pnpm",
+    "editor": "Cursor/Claude Code"
+  },
+  "version_notes": {
+    "lts": false,
+    "breaking_changes": [
+      "forwardRef非推奨化",
+      "ref callback引数変更",
+      "defaultPropsサポート終了",
+      "PropTypes削除",
+      "Node.js 18以上必須"
+    ],
+    "deprecated": [
+      "ReactDOM.render（createRoot使用）",
+      "ReactDOM.hydrate（hydrateRoot使用）",
+      "findDOMNode",
+      "unmountComponentAtNode"
+    ]
+  },
+  "sources": [
+    "https://react.dev/blog/2024/12/05/react-19",
+    "https://react.dev/versions",
+    "https://github.com/facebook/react/releases"
+  ]
+}
