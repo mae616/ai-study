@@ -1,0 +1,137 @@
+{
+    "name": "React",
+    "version": "19.2.0",
+    "runtime": "Node.js 20+ (LTS推奨)",
+    "official_docs": [
+        "https://react.dev",
+        "https://react.dev/versions",
+        "https://github.com/facebook/react"
+    ],
+    "learning_goals": {
+        "beginner": [
+            {
+                "title": "環境構築とプロジェクト作成",
+                "outcome": "Viteで新規プロジェクトを作成し開発サーバーを起動できる",
+                "doc": "https://react.dev/learn/start-a-new-react-project"
+            },
+            {
+                "title": "JSXの基礎とコンポーネント作成",
+                "outcome": "関数コンポーネントを作成しpropsでデータ渡しができる",
+                "doc": "https://react.dev/learn/writing-markup-with-jsx"
+            },
+            {
+                "title": "useStateによる状態管理",
+                "outcome": "ボタンクリックで状態を更新し画面を再レンダリングできる",
+                "doc": "https://react.dev/learn/state-a-components-memory"
+            },
+            {
+                "title": "イベントハンドリング",
+                "outcome": "フォーム入力とsubmitイベントを処理できる",
+                "doc": "https://react.dev/learn/responding-to-events"
+            },
+            {
+                "title": "条件付きレンダリングとリスト表示",
+                "outcome": "配列データをmapで表示しkeyを適切に設定できる",
+                "doc": "https://react.dev/learn/conditional-rendering"
+            }
+        ],
+        "core": [
+            {
+                "title": "Server Componentsの実装",
+                "outcome": "RSC対応フレームワークでサーバーコンポーネントを作成できる",
+                "doc": "https://react.dev/reference/rsc/server-components"
+            },
+            {
+                "title": "Server Actionsとフォーム",
+                "outcome": "\"use server\"でサーバーアクションを定義し非同期処理を実行できる",
+                "doc": "https://react.dev/reference/rsc/server-actions"
+            },
+            {
+                "title": "ActivityコンポーネントとuseEffectEvent",
+                "outcome": "Activityで状態を保持したUI切り替えとuseEffectEventで最新値参照を実装できる",
+                "doc": "https://react.dev/reference/react/Activity"
+            },
+            {
+                "title": "useActionStateとuseOptimistic",
+                "outcome": "送信中の状態管理と楽観的更新でUXを向上できる",
+                "doc": "https://react.dev/reference/react/useOptimistic"
+            },
+            {
+                "title": "カスタムHooksの作成",
+                "outcome": "状態ロジックを抽出し複数コンポーネントで共有できる",
+                "doc": "https://react.dev/learn/reusing-logic-with-custom-hooks"
+            },
+            {
+                "title": "Context APIによる状態共有",
+                "outcome": "useContextでプロップドリリングを回避できる",
+                "doc": "https://react.dev/reference/react/useContext"
+            }
+        ],
+        "applied": [
+            {
+                "title": "認証とセッション管理",
+                "outcome": "Server Actionsで認証フローを実装しセッションを管理できる",
+                "doc": "https://react.dev/reference/rsc/server-actions#authentication"
+            },
+            {
+                "title": "部分プリレンダリングとストリーミングSSR",
+                "outcome": "Resume APIsとWeb/Node Streamsで静的・動的コンテンツを最適化できる",
+                "doc": "https://react.dev/reference/react-dom/server"
+            },
+            {
+                "title": "パフォーマンス最適化",
+                "outcome": "React.memo、useMemo、useCallback、Chrome DevToolsで最適化できる",
+                "doc": "https://react.dev/reference/react/memo"
+            },
+            {
+                "title": "エラーバウンダリとSuspense",
+                "outcome": "非同期処理のローディング状態とエラーを適切に処理できる",
+                "doc": "https://react.dev/reference/react/Suspense"
+            },
+            {
+                "title": "アクセシビリティ対応",
+                "outcome": "ARIA属性とセマンティックHTMLで支援技術に対応できる",
+                "doc": "https://react.dev/learn/accessibility"
+            },
+            {
+                "title": "テストとデバッグ",
+                "outcome": "React DevToolsとテストライブラリでコンポーネントを検証できる",
+                "doc": "https://react.dev/learn/react-developer-tools"
+            }
+        ]
+    },
+    "target_product": "タスク管理アプリ with リアルタイム同期＆タブ切り替え",
+    "dev_env": {
+        "os": "macOS/Linux/Windows",
+        "package_manager": "pnpm (推奨) / npm / yarn",
+        "editor": "Cursor/Claude Code/VS Code"
+    },
+    "version_notes": {
+        "lts": false,
+        "new_features": [
+            "Activity Component - UI状態の保持と復元",
+            "useEffectEvent Hook - 非リアクティブEffect Event",
+            "cacheSignal - RSCキャッシュライフタイム管理",
+            "Resume APIs - 部分プリレンダリング",
+            "Chrome DevTools Performance Tracks"
+        ],
+        "breaking_changes": [
+            "forwardRefの非推奨化",
+            "Context.Providerの廃止（<Context>を使用）",
+            "ref callbacksの暗黙的returnの禁止",
+            "TypeScriptの型定義の厳格化"
+        ],
+        "deprecated": [
+            "Create React App（Vite等を推奨）",
+            "defaultProps（関数パラメータのデフォルト値を使用）",
+            "propTypes（TypeScriptを推奨）"
+        ],
+        "eslint_requirements": "eslint-plugin-react-hooks@6.1.0以上（useEffectEvent対応）"
+    },
+    "sources": [
+        "https://react.dev/blog/2025/10/01/react-19-2",
+        "https://react.dev/blog/2024/12/05/react-19",
+        "https://github.com/facebook/react/releases",
+        "https://react.dev/reference/react/experimental_useEffectEvent"
+    ]
+}
