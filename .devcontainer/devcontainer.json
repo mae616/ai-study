@@ -16,7 +16,7 @@
     },
     "remoteUser": "root",
     "postCreateCommand": "bash .devcontainer/setup.sh",
-    "forwardPorts": [8000, 3001, 5173, 8888, 8001],
+    "forwardPorts": [8001, 3001, 5174, 8889, 8002],
     "overrideCommand": false,
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.vscode/extensions,target=/root/.vscode-server/extensions,type=bind,consistency=cached",

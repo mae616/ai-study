@@ -35,10 +35,10 @@ services:
           - WATCHPACK_POLLING=true
           - FAST_REFRESH=false
         ports:
-            - "3001:3001"
-            - "5173:5173"
-            - "8000:8000"
-            - "8888:8000"
+            - "3001:3000"
+            - "5174:5173"
+            - "8001:8000"
+            - "8889:8000"
         working_dir: /workspace
         user: root
         stdin_open: true
