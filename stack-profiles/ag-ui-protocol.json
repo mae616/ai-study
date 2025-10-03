@@ -158,5 +158,48 @@
     "https://docs.ag-ui.com/concepts/events",
     "https://docs.ag-ui.com/sdk/python/core/events",
     "https://github.com/orgs/ag-ui-protocol/projects/1"
-  ]
+  ],
+  "learning_products": {
+    "beginner": {
+      "name": "即答AIチャットボット",
+      "description": "テキスト入力→TEXT_MESSAGE_CONTENTをストリーミング表示→RUN_FINISHEDで完了",
+      "core_concepts": [
+        "17種イベントのうち最小構成（RUN_STARTED/FINISHED、TEXT_MESSAGE_START/CONTENT/END）",
+        "Frontend（React + AgentClient）とBackend（Node.js + Proxy）の2層構造",
+        "npx create-ag-ui-app@latestでの環境構築とnpm run dev"
+      ],
+      "why": "AG-UIのコアアーキテクチャとイベント駆動の基礎を、ツールやステート管理抜きで体感できる",
+      "duration": "2-3時間",
+      "difficulty": "★☆☆",
+      "events_count": 5
+    },
+    "core": {
+      "name": "天気予報アシスタント（ツール統合）",
+      "description": "「東京の天気は?」→エージェントがTOOL_CALL（天気API）→結果をテキストで返す",
+      "core_concepts": [
+        "TOOL_CALL_START/ARGS/END/RESULTの4イベントペア",
+        "Start-Args-End-Resultパターンの実装とIDマッチング",
+        "Middleware層（@ag-ui/langgraphまたは手動実装）",
+        "ローディング表示とエラーハンドリング"
+      ],
+      "why": "AG-UIの最頻出ユースケース（ツール実行のUI可視化）を習得、実務で即使える",
+      "duration": "4-6時間",
+      "difficulty": "★★☆",
+      "events_count": 9
+    },
+    "applied": {
+      "name": "タスク管理エージェント（ステート + Generative UI + Human-in-the-loop）",
+      "description": "ユーザーが「買い物リスト作成」→エージェントがSTATE_SNAPSHOTでリスト同期、「カートに追加」→TOOL_CALL_START前にCUSTOMイベントで確認UI生成→ユーザー承認→実行、リアルタイムで複数クライアント間でステート共有（STATE_DELTA）",
+      "core_concepts": [
+        "STATE_SNAPSHOT/DELTAでの状態同期",
+        "CUSTOMイベントで動的UIコンポーネント（ボタン/チェックボックス）生成",
+        "Human-in-the-loopパターン（ユーザー承認フロー）",
+        "マルチクライアント対応（WebSocket推奨）"
+      ],
+      "why": "AG-UIの差別化要素3つ（共有ステート、Generative UI、対話型確認）を全て習得、プロダクションレベルの設計力を養う",
+      "duration": "8-12時間",
+      "difficulty": "★★★",
+      "events_count": 15
+    }
+  }
 }
