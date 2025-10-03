@@ -1,0 +1,162 @@
+{
+  "name": "AG UI Protocol",
+  "version": "0.0.36-37",
+  "runtime": "Node.js 18+ LTS",
+  "official_docs": [
+    "https://docs.ag-ui.com/",
+    "https://github.com/ag-ui-protocol/ag-ui",
+    "https://docs.ag-ui.com/sdk/js/core/overview",
+    "https://docs.ag-ui.com/sdk/python/core/events",
+    "https://github.com/orgs/ag-ui-protocol/projects/1"
+  ],
+  "learning_goals": {
+    "beginner": [
+      {
+        "title": "AG UI Protocolの世界観理解",
+        "outcome": "MCP/A2A/AG-UIの違いを説明でき、AG-UIが解決する課題を3つ挙げられる",
+        "doc": "https://docs.ag-ui.com/introduction"
+      },
+      {
+        "title": "環境構築とプロジェクト作成",
+        "outcome": "npx create-ag-ui-app@latestでスターターアプリを生成し、npm run devで起動、ブラウザで動作確認",
+        "doc": "https://docs.ag-ui.com/quickstart/applications"
+      },
+      {
+        "title": "コアアーキテクチャの理解",
+        "outcome": "Frontend（App + AG-UI Client）とBackend（Agent + Secure Proxy）の役割を説明できる",
+        "doc": "https://docs.ag-ui.com/concepts/architecture"
+      },
+      {
+        "title": "17種類のイベントタイプ",
+        "outcome": "ライフサイクル（RUN/STEP系5種）、テキストメッセージ（3種）、ツール呼び出し（4種）、ステート管理（3種）、特殊イベント（RAW/CUSTOM）を列挙し各役割を説明",
+        "doc": "https://docs.ag-ui.com/concepts/events"
+      },
+      {
+        "title": "@ag-ui/core パッケージ",
+        "outcome": "npm install @ag-ui/coreを実行し、RunAgentInput, Message, Context, Tool, State型をimportして型チェック",
+        "doc": "https://docs.ag-ui.com/sdk/js/core/overview"
+      }
+    ],
+    "core": [
+      {
+        "title": "AG-UI Clientの実装",
+        "outcome": "AgentClientインスタンス（v0.0.37+）を作成し、runAgent()でエージェント起動、TEXT_MESSAGE_CONTENTイベントをUIに表示",
+        "doc": "https://docs.ag-ui.com/sdk/js/client/overview"
+      },
+      {
+        "title": "イベントハンドリングパターン",
+        "outcome": "Start-Content-Endパターン（TEXT_MESSAGE系）、Start-Args-End-Resultパターン（TOOL_CALL系）、Snapshot-Deltaパターン（STATE系）、Run/Stepライフサイクルを実装し、idでイベントをマッチング",
+        "doc": "https://docs.ag-ui.com/concepts/events"
+      },
+      {
+        "title": "ツール呼び出しの統合",
+        "outcome": "TOOL_CALL_START/ARGS/END/RESULTイベントを処理し、ツール実行中のローディング表示と結果をUIに反映",
+        "doc": "https://docs.ag-ui.com/quickstart/middleware"
+      },
+      {
+        "title": "ステート管理（共有ステート）",
+        "outcome": "STATE_SNAPSHOTとSTATE_DELTAで状態同期、ユーザー入力をバックエンドに送信してステート更新",
+        "doc": "https://docs.ag-ui.com/concepts/events"
+      },
+      {
+        "title": "ストリーミングテキストUI",
+        "outcome": "TEXT_MESSAGE_CONTENTイベントを受け取りながら、UIにテキストを逐次追加",
+        "doc": "https://docs.ag-ui.com/introduction"
+      },
+      {
+        "title": "ライフサイクル管理",
+        "outcome": "RUN_STARTED→STEP_STARTED→STEP_FINISHED→RUN_FINISHEDのフローを実装、RUN_ERRORでエラーハンドリング",
+        "doc": "https://docs.ag-ui.com/concepts/events"
+      }
+    ],
+    "applied": [
+      {
+        "title": "Generative UI（動的UI生成）",
+        "outcome": "CUSTOMイベントでUIコンポーネント指示を送信し、フロントエンドで対応するコンポーネントをレンダリング",
+        "doc": "https://docs.ag-ui.com/introduction"
+      },
+      {
+        "title": "Human-in-the-loop（対話型確認）",
+        "outcome": "エージェントがツール実行前に確認リクエストを送信（CUSTOMイベント利用）、ユーザーが承認/拒否、エージェントが次のSTEPに進む実装",
+        "doc": "https://docs.ag-ui.com/introduction"
+      },
+      {
+        "title": "マルチエージェント構成（フレームワークレベル）",
+        "outcome": "LangGraph/Mastraのサブグラフ/エージェント委譲機能を使い、メインエージェントから専門エージェントに処理を委譲、AG-UIでは通常のイベントフローとして扱う実装",
+        "doc": "https://docs.ag-ui.com/quickstart/middleware"
+      },
+      {
+        "title": "マルチモーダル対応",
+        "outcome": "ファイルアップロードをContextに含め、エージェントが画像解析結果を返す実装",
+        "doc": "https://docs.ag-ui.com/introduction"
+      },
+      {
+        "title": "トランスポート層の選択",
+        "outcome": "SSE/WebSocket/Webhookから適切なトランスポートを選択し実装、各利点と制約を説明",
+        "doc": "https://docs.ag-ui.com/concepts/architecture"
+      },
+      {
+        "title": "フレームワーク統合（LangGraph/Pydantic AI等）",
+        "outcome": "@ag-ui/langgraphまたは@ag-ui/pydantic-aiを使ってフレームワークをAG-UI対応にし、フロントエンドから実行",
+        "doc": "https://docs.ag-ui.com/quickstart/middleware"
+      },
+      {
+        "title": "RAWイベントとレガシー統合",
+        "outcome": "既存のエージェントシステムが独自イベントを発行している場合、RAWイベントでラップしてAG-UI経由でフロントエンドに送信",
+        "doc": "https://docs.ag-ui.com/concepts/events"
+      },
+      {
+        "title": "カスタムクライアント実装",
+        "outcome": "AG-UIイベント17種を全てハンドリングし、仕様に準拠した送受信フローを実装",
+        "doc": "https://docs.ag-ui.com/quickstart/clients"
+      },
+      {
+        "title": "プロダクション対応",
+        "outcome": "セキュアプロキシでAPIキーを隠蔽、認証フロー実装、ネットワークエラー時の自動再接続、イベントログ収集",
+        "doc": "https://docs.ag-ui.com/concepts/architecture"
+      }
+    ]
+  },
+  "target_product": "AI Task Assistant with Real-time Streaming UI（リアルタイム・ストリーミングUI付きAIタスクアシスタント）",
+  "dev_env": {
+    "os": "Linux/macOS/Windows",
+    "package_manager": "npm / pnpm / yarn",
+    "editor": "Cursor / Claude Code / VS Code"
+  },
+  "version_notes": {
+    "lts": false,
+    "current_version": {
+      "@ag-ui/core": "0.0.36",
+      "@ag-ui/client": "0.0.37"
+    },
+    "breaking_changes": [
+      "0.x系は開発版のため、仕様変更によるAPI変更の可能性あり",
+      "2025年6月: イベントタイプが4種から17種に拡張（後方互換性あり）",
+      "Draft Events（Activity/Reasoning/Meta/Modified Lifecycle）は提案段階"
+    ],
+    "deprecated": [
+      "現時点で明示的な廃止APIなし（1.0リリース時に仕様固定予定）"
+    ],
+    "recent_updates": [
+      "2025年6月: イベントタイプが4種から17種に拡張",
+      "2025年6月: Pydantic AI対応完了",
+      "2025年6月: A2AプロトコルとのハンドシェイクPreリリース",
+      "2025年6月: CLIツール（create-ag-ui-app）安定化",
+      "In Review: Concurrent Tool Calls（並行ツール呼び出し）"
+    ],
+    "roadmap_highlights": [
+      "多言語SDK開発中（Golang, Java, Rust, .NET, Nim）",
+      "新プラットフォーム統合検討中（AWS Strands, Langroid, n8n, Bedrock）",
+      "マルチモーダル強化（音声サポート検討中）",
+      "並行ツール呼び出し（In Review）"
+    ]
+  },
+  "sources": [
+    "https://github.com/ag-ui-protocol/ag-ui",
+    "https://docs.ag-ui.com/introduction",
+    "https://www.npmjs.com/package/@ag-ui/core",
+    "https://docs.ag-ui.com/concepts/events",
+    "https://docs.ag-ui.com/sdk/python/core/events",
+    "https://github.com/orgs/ag-ui-protocol/projects/1"
+  ]
+}

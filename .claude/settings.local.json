@@ -1,9 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:docs.ag-ui.com)",
+      "WebFetch(domain:github.com)"
     ],
-    "ask": [],
-    "deny": []
+    "deny": [],
+    "ask": []
   }
 }
