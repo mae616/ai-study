@@ -1,0 +1,151 @@
+{
+    "name": "競技プログラミング - アルゴリズムとデータ構造（JavaScript）",
+    "version": "ECMAScript 2024 / Node.js 20 LTS",
+    "runtime": "Node.js 20+ LTS (AtCoder: Node.js 20.11.1, Codeforces: Node.js 15.8.0)",
+    "official_docs": [
+        "https://cp-algorithms.com/",
+        "https://atcoder.jp/",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "https://tc39.es/ecma262/"
+    ],
+    "learning_goals": {
+        "beginner": [
+            {
+                "title": "JavaScriptでの競プロ環境構築",
+                "outcome": "Node.jsで標準入力を読み込み、AtCoderで初回AC（Accepted）を取得できる",
+                "doc": "https://atcoder.jp/contests/practice"
+            },
+            {
+                "title": "計算量とアルゴリズム思考の基礎",
+                "outcome": "O記法を理解し、制約からTLE（時間切れ）を避けるアプローチを選択できる",
+                "doc": "https://cp-algorithms.com/ (Fundamentals)"
+            },
+            {
+                "title": "全探索と再帰の考え方",
+                "outcome": "順列・組み合わせを再帰で列挙し、N≤10で全探索を実装できる",
+                "doc": "https://cp-algorithms.com/algebra/bit-manipulation.html"
+            },
+            {
+                "title": "基本データ構造の理解",
+                "outcome": "配列・連想配列・Set/Mapを使い分け、スタック・キューを実装できる",
+                "doc": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects"
+            },
+            {
+                "title": "ソートと二分探索",
+                "outcome": "Array.sort()のカスタム比較関数、二分探索でO(log N)検索を実装できる",
+                "doc": "https://cp-algorithms.com/data_structures/sparse-table.html"
+            }
+        ],
+        "core": [
+            {
+                "title": "動的計画法の本質: メモ化と状態遷移",
+                "outcome": "フィボナッチ・階段登り問題で「重複計算を避ける」思考を体得し、Top-DownとBottom-Upを実装できる",
+                "doc": "https://cp-algorithms.com/dynamic_programming/intro-to-dp.html"
+            },
+            {
+                "title": "DP典型パターン1: ナップサック問題",
+                "outcome": "「価値最大化」型DPの状態定義・遷移式を立て、0/1ナップサックをO(NW)で実装できる",
+                "doc": "https://cp-algorithms.com/dynamic_programming/knapsack.html"
+            },
+            {
+                "title": "DP典型パターン2: 最長増加部分列（LIS）",
+                "outcome": "1次元配列の使いまわしテクニックでO(N^2)実装、さらに二分探索でO(N log N)に改善できる",
+                "doc": "https://cp-algorithms.com/sequences/longest_increasing_subsequence.html"
+            },
+            {
+                "title": "DP典型パターン3: 区間DP・ビットDP",
+                "outcome": "区間を状態とするDP、2^N状態をビットマスクで表現し巡回セールスマン問題を解ける",
+                "doc": "https://cp-algorithms.com/dynamic_programming/divide-and-conquer-dp.html"
+            },
+            {
+                "title": "グラフアルゴリズムの考え方",
+                "outcome": "BFS/DFSで到達可能性・最短経路を求め、隣接リスト表現でグラフを扱える",
+                "doc": "https://cp-algorithms.com/graph/breadth-first-search.html"
+            },
+            {
+                "title": "貪欲法（Greedy）の判定",
+                "outcome": "局所最適が全体最適になる条件を見極め、区間スケジューリング問題を実装できる",
+                "doc": "https://cp-algorithms.com/schedules/schedule_with_completion_duration.html"
+            }
+        ],
+        "applied": [
+            {
+                "title": "高度なDP: 木DP・確率DP・桁DP",
+                "outcome": "木構造上のDP、期待値計算、桁数制約付きDP（N以下のK倍数個数）を実装できる",
+                "doc": "https://cp-algorithms.com/ (Trees/Game Theory)"
+            },
+            {
+                "title": "グラフ応用: ダイクストラ法・UnionFind",
+                "outcome": "優先度付きキューで最短経路O((V+E) log V)、素集合データ構造で連結判定を実装できる",
+                "doc": "https://cp-algorithms.com/graph/dijkstra.html"
+            },
+            {
+                "title": "セグメント木・BIT（Binary Indexed Tree）",
+                "outcome": "区間和・区間最小値クエリをO(log N)で処理、遅延評価セグメント木を理解できる",
+                "doc": "https://cp-algorithms.com/data_structures/segment_tree.html"
+            },
+            {
+                "title": "コンテスト実践: 時間配分と部分点戦略",
+                "outcome": "AtCoder ABC 4問（A～D）を90分で完答、TLEをO記法から事前予測できる",
+                "doc": "https://atcoder.jp/ (バーチャル参加)"
+            },
+            {
+                "title": "典型90問マラソン（JavaScript実装）",
+                "outcome": "DP・グラフ・数論・二分探索など10分野×9問を網羅し、再利用可能なテンプレート集を作成できる",
+                "doc": "https://github.com/E869120/kyopro_educational_90"
+            },
+            {
+                "title": "ライブラリ整備とテスト自動化",
+                "outcome": "GitHub上でJest/Vitestによる単体テスト、online-judge-toolsで過去問自動検証できる",
+                "doc": "https://github.com/online-judge-tools/oj"
+            }
+        ]
+    },
+    "target_product": "JavaScriptで実装するDPライブラリ + AtCoder過去問50題解答集（ナップサック・LIS・区間DP・bitDP・木DP等典型10パターン、緑コーダー到達目標）",
+    "dev_env": {
+        "os": "macOS / Linux / Windows (WSL2推奨)",
+        "package_manager": "npm / pnpm",
+        "editor": "Cursor / Claude Code / VS Code",
+        "test_framework": "Jest / Vitest（単体テスト）、online-judge-tools（自動提出検証）"
+    },
+    "version_notes": {
+        "lts": true,
+        "lts_note": "Node.js 20 LTSは2026年4月までサポート。AtCoderはNode.js 20.11.1、CodeforcesはNode.js 15.8.0を採用",
+        "js_features": [
+            "BigInt（大きな整数演算、modint計算に必須）",
+            "Array.prototype.at（負のインデックスアクセス）",
+            "Destructuring assignment（配列・オブジェクト分割代入）",
+            "Set/Map（重複排除、O(1)検索）",
+            "Array.from / fill（初期化の短縮）"
+        ],
+        "performance_tips": [
+            "readline/readline-syncは遅い → process.stdin + StringDecoderで一括読み込み",
+            "console.log()を毎回呼ぶと遅い → 結果を配列に溜めてjoin('\\n')で一括出力",
+            "文字列連結は+ より Array.join()が高速",
+            "再帰深度に注意（スタックオーバーフロー） → ループ or メモ化",
+            "AtCoderのJavaScript制約: 実行時間制限2秒、メモリ1024MB"
+        ],
+        "breaking_changes": [
+            "ES2015以前のvar → const/let推奨",
+            "Array.prototype.sort()は安定ソート（ES2019以降保証）"
+        ],
+        "deprecated": [
+            "arguments（rest parameters ...argsを使用）",
+            "var（const/letを使用）"
+        ],
+        "competitive_programming_notes": [
+            "AtCoder Rating: 灰色(0~399) → 茶色(400~799) → 緑(800~1199) → 水色(1200~1599) → 青(1600~1999) → 黄色(2000~2399) → 橙 → 赤(2800~)",
+            "JavaScriptは競プロではマイナー言語（C++/Pythonが主流）だが、アルゴリズム思考の学習には十分",
+            "BigIntを使った modint演算（1e9+7などの剰余計算）が必須",
+            "AtCoder ABC-D問題レベル（緑コーダー目標）までは十分対応可能"
+        ]
+    },
+    "sources": [
+        "https://cp-algorithms.com/",
+        "https://atcoder.jp/",
+        "https://tc39.es/ecma262/",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "https://github.com/E869120/kyopro_educational_90",
+        "https://nodejs.org/en/about/previous-releases"
+    ]
+}
