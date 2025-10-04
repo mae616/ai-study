@@ -102,6 +102,11 @@
         ]
     },
     "target_product": "JavaScriptで実装するDPライブラリ + AtCoder過去問50題解答集（ナップサック・LIS・区間DP・bitDP・木DP等典型10パターン、緑コーダー到達目標）",
+    "learning_style": {
+        "code_implementation": "ユーザー側が別workspaceで実装",
+        "claude_role": "アルゴリズムの考え方・思想・問題選定・計算量解析を日本語で解説",
+        "output_format": "コードは書かず、思考プロセスと典型パターンの説明に集中"
+    },
     "dev_env": {
         "os": "macOS / Linux / Windows (WSL2推奨)",
         "node_version_manager": "nvm / fnm（Node.js 18.16.1と22の切り替え必須）",
