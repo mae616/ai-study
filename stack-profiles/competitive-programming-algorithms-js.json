@@ -1,7 +1,7 @@
 {
     "name": "競技プログラミング - アルゴリズムとデータ構造（JavaScript）",
-    "version": "ECMAScript 2024 / Node.js 20 LTS",
-    "runtime": "Node.js 20+ LTS (AtCoder: Node.js 20.11.1, Codeforces: Node.js 15.8.0)",
+    "version": "ECMAScript 2024 (ES15) / Node.js 22 LTS",
+    "runtime": "Node.js 22 LTS (AtCoder: Node.js 18.16.1, Codeforces: Node.js 15.8.0)",
     "official_docs": [
         "https://cp-algorithms.com/",
         "https://atcoder.jp/",
@@ -11,8 +11,8 @@
     "learning_goals": {
         "beginner": [
             {
-                "title": "JavaScriptでの競プロ環境構築",
-                "outcome": "Node.jsで標準入力を読み込み、AtCoderで初回AC（Accepted）を取得できる",
+                "title": "JavaScriptでの競プロ環境構築（バージョン管理含む）",
+                "outcome": "nvm/fnmでNode.js 18.16.1と22を切り替え、標準入力を読み込み、AtCoderで初回AC（Accepted）を取得できる",
                 "doc": "https://atcoder.jp/contests/practice"
             },
             {
@@ -104,16 +104,19 @@
     "target_product": "JavaScriptで実装するDPライブラリ + AtCoder過去問50題解答集（ナップサック・LIS・区間DP・bitDP・木DP等典型10パターン、緑コーダー到達目標）",
     "dev_env": {
         "os": "macOS / Linux / Windows (WSL2推奨)",
+        "node_version_manager": "nvm / fnm（Node.js 18.16.1と22の切り替え必須）",
         "package_manager": "npm / pnpm",
         "editor": "Cursor / Claude Code / VS Code",
         "test_framework": "Jest / Vitest（単体テスト）、online-judge-tools（自動提出検証）"
     },
     "version_notes": {
         "lts": true,
-        "lts_note": "Node.js 20 LTSは2026年4月までサポート。AtCoderはNode.js 20.11.1、CodeforcesはNode.js 15.8.0を採用",
+        "lts_note": "Node.js 22 LTSは2027年4月までサポート（Active LTS: 2024/10~2025/10、Maintenance LTS: 2025/10~2027/4）。AtCoderはNode.js 18.16.1、CodeforcesはNode.js 15.8.0を採用",
+        "atcoder_version_warning": "【重要】AtCoderは18.16.1を使用中。Node.js 20/22の新機能（Array.prototype.toSorted等）は使用不可。ローカル環境はNode.js 22で開発し、AtCoder提出前にNode.js 18での動作確認を推奨",
         "js_features": [
             "BigInt（大きな整数演算、modint計算に必須）",
-            "Array.prototype.at（負のインデックスアクセス）",
+            "Array.prototype.at（負のインデックスアクセス、Node.js 16.6.0以降）",
+            "Array.prototype.findLast/findLastIndex（Node.js 18以降、逆順検索）",
             "Destructuring assignment（配列・オブジェクト分割代入）",
             "Set/Map（重複排除、O(1)検索）",
             "Array.from / fill（初期化の短縮）"
@@ -127,7 +130,8 @@
         ],
         "breaking_changes": [
             "ES2015以前のvar → const/let推奨",
-            "Array.prototype.sort()は安定ソート（ES2019以降保証）"
+            "Array.prototype.sort()は安定ソート（ES2019以降保証）",
+            "Node.js 18未満の機能は使用不可（AtCoder基準）: Array.prototype.toSorted, Array.prototype.toReversed, Object.groupBy等"
         ],
         "deprecated": [
             "arguments（rest parameters ...argsを使用）",
