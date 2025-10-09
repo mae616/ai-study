@@ -1,7 +1,7 @@
 {
   "name": "AG UI Protocol",
   "version": "0.0.36-37",
-  "runtime": "Node.js 18+ LTS (推奨: 22 LTS、2025年10月時点。18はEOL、20も利用可能)",
+  "runtime": "Node.js 18+ LTS (推奨: 22 LTS、2025年10月時点。18は2025年4月30日にEOL到達、20も利用可能、22 LTSは2024年10月29日に昇格)",
   "official_docs": [
     "https://docs.ag-ui.com/",
     "https://github.com/ag-ui-protocol/ag-ui",
@@ -27,8 +27,8 @@
         "doc": "https://docs.ag-ui.com/concepts/architecture"
       },
       {
-        "title": "約16種のコアイベントタイプ",
-        "outcome": "ライフサイクル（RUN/STEP系5種）、テキストメッセージ（4種: START/CONTENT/END/CHUNK）、ツール呼び出し（4種）、ステート管理（3種: SNAPSHOT/DELTA/MESSAGES_SNAPSHOT）を列挙し各役割を説明。公式では約16種のコアイベントを定義（Draft Events除く）",
+        "title": "18種のコアイベントタイプ",
+        "outcome": "ライフサイクル（RUN/STEP系5種）、テキストメッセージ（4種: START/CONTENT/END/CHUNK）、ツール呼び出し（4種）、ステート管理（3種: SNAPSHOT/DELTA/MESSAGES_SNAPSHOT）、特殊イベント（2種: RAW/CUSTOM）を列挙し各役割を説明。公式では18種のコアイベントを定義（Draft Events除く）",
         "doc": "https://docs.ag-ui.com/concepts/events"
       },
       {
@@ -107,7 +107,7 @@
       },
       {
         "title": "カスタムクライアント実装",
-        "outcome": "AG-UIイベント17種を全てハンドリングし、仕様に準拠した送受信フローを実装",
+        "outcome": "AG-UIイベント18種を全てハンドリングし、仕様に準拠した送受信フローを実装",
         "doc": "https://docs.ag-ui.com/quickstart/clients"
       },
       {
@@ -131,20 +131,22 @@
     },
     "breaking_changes": [
       "0.x系は開発版のため、仕様変更によるAPI変更の可能性あり",
-      "2025年6月: イベントタイプが4種から約16種のコアイベントに拡張（後方互換性あり）",
-      "2025年10月: Node.js 18がEOL到達、Node.js 22 LTSが推奨バージョンに",
+      "2025年6月: イベントタイプが4種から18種のコアイベントに拡張（後方互換性あり）",
+      "2025年4月30日: Node.js 18がEOL到達、2024年10月29日にNode.js 22がLTSに昇格し推奨バージョンに",
       "Draft Events（Activity/Reasoning/Meta/Modified Lifecycle）は提案段階"
     ],
     "deprecated": [
       "現時点で明示的な廃止APIなし（1.0リリース時に仕様固定予定）"
     ],
     "recent_updates": [
-      "2025年6月: イベントタイプが4種から約16種のコアイベントに拡張",
+      "2025年6月: イベントタイプが4種から18種のコアイベントに拡張",
       "2025年6月: Pydantic AI対応完了",
       "2025年6月: A2AプロトコルとのハンドシェイクPreリリース",
       "2025年6月: CLIツール（create-ag-ui-app）安定化",
       "2025年10月: @ag-ui/core 0.0.36、@ag-ui/client 0.0.37リリース",
-      "In Review: Concurrent Tool Calls（並行ツール呼び出し）"
+      "2024年10月29日: Node.js 22がLTSに昇格 (コードネーム 'Jod')、Active LTS期間は2025年10月21日まで",
+      "2025年4月30日: Node.js 18がEOL到達、セキュリティパッチ提供終了",
+      "In Review: Concurrent Tool Calls（並行ツール呼び出し）、.NET SDK、Nim SDK、Dify統合、Kotlin SDK"
     ],
     "roadmap_highlights": [
       "多言語SDK開発中（Golang, Java, Rust, .NET, Nim）",
@@ -152,7 +154,13 @@
       "マルチモーダル強化（音声サポート検討中）",
       "並行ツール呼び出し（In Review）"
     ],
-    "notes": "イベント数について: 公式では「~16 standard event types」と記載。Draft Events（Activity/Reasoning/Meta/Modified Lifecycle）は提案段階で正式採用未確定。学習時は16種のコアイベントを基本として扱うことを推奨"
+    "notes": "イベント数について: 公式では「18種のコアイベント (Lifecycle 5種、Text Message 4種、Tool Call 4種、State 3種、Special 2種)」と記載。Draft Events（Activity 2種/Reasoning 5種/Meta 1種/Modified Lifecycle 2種、計10種）は提案段階で正式採用未確定。学習時は18種のコアイベントを基本として扱うことを推奨",
+    "important_dates": {
+      "node_18_eol": "2025年4月30日",
+      "node_22_lts_promotion": "2024年10月29日 (コードネーム 'Jod')",
+      "node_22_active_lts_end": "2025年10月21日",
+      "node_22_maintenance_lts_end": "2027年4月30日"
+    }
   },
   "sources": [
     "https://github.com/ag-ui-protocol/ag-ui",
@@ -168,7 +176,7 @@
         "name": "即答AIチャットボット",
         "description": "テキスト入力→TEXT_MESSAGE_CONTENTをストリーミング表示→RUN_FINISHEDで完了",
         "core_concepts": [
-          "16種コアイベントのうち最小構成（RUN_STARTED/FINISHED、TEXT_MESSAGE_START/CONTENT/END）",
+          "18種コアイベントのうち最小構成（RUN_STARTED/FINISHED、TEXT_MESSAGE_START/CONTENT/END）",
           "Frontend（React + AgentClient）とBackend（Node.js + Proxy）の2層構造",
           "npx create-ag-ui-app@latestでの環境構築とnpm run dev"
         ],
@@ -223,7 +231,7 @@
         "why": "AG-UIの全機能（共有ステート、Generative UI、対話型確認）に加え、外部API統合と時系列データ管理を習得、長期的なデータ蓄積と季節に応じた振り返り体験の設計力を養う",
         "duration": "10-14時間",
         "difficulty": "★★★",
-        "events_count": 17
+        "events_count": 18
       }
     ]
   }
