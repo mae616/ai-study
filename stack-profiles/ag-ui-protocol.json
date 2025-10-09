@@ -1,7 +1,7 @@
 {
   "name": "AG UI Protocol",
   "version": "0.0.36-37",
-  "runtime": "Node.js 18+ LTS",
+  "runtime": "Node.js 18+ LTS (推奨: 22 LTS、2025年10月時点。18はEOL、20も利用可能)",
   "official_docs": [
     "https://docs.ag-ui.com/",
     "https://github.com/ag-ui-protocol/ag-ui",
@@ -27,8 +27,8 @@
         "doc": "https://docs.ag-ui.com/concepts/architecture"
       },
       {
-        "title": "17種類のイベントタイプ",
-        "outcome": "ライフサイクル（RUN/STEP系5種）、テキストメッセージ（3種）、ツール呼び出し（4種）、ステート管理（3種）、特殊イベント（RAW/CUSTOM）を列挙し各役割を説明",
+        "title": "約16種のコアイベントタイプ",
+        "outcome": "ライフサイクル（RUN/STEP系5種）、テキストメッセージ（4種: START/CONTENT/END/CHUNK）、ツール呼び出し（4種）、ステート管理（3種: SNAPSHOT/DELTA/MESSAGES_SNAPSHOT）を列挙し各役割を説明。公式では約16種のコアイベントを定義（Draft Events除く）",
         "doc": "https://docs.ag-ui.com/concepts/events"
       },
       {
@@ -131,17 +131,19 @@
     },
     "breaking_changes": [
       "0.x系は開発版のため、仕様変更によるAPI変更の可能性あり",
-      "2025年6月: イベントタイプが4種から17種に拡張（後方互換性あり）",
+      "2025年6月: イベントタイプが4種から約16種のコアイベントに拡張（後方互換性あり）",
+      "2025年10月: Node.js 18がEOL到達、Node.js 22 LTSが推奨バージョンに",
       "Draft Events（Activity/Reasoning/Meta/Modified Lifecycle）は提案段階"
     ],
     "deprecated": [
       "現時点で明示的な廃止APIなし（1.0リリース時に仕様固定予定）"
     ],
     "recent_updates": [
-      "2025年6月: イベントタイプが4種から17種に拡張",
+      "2025年6月: イベントタイプが4種から約16種のコアイベントに拡張",
       "2025年6月: Pydantic AI対応完了",
       "2025年6月: A2AプロトコルとのハンドシェイクPreリリース",
       "2025年6月: CLIツール（create-ag-ui-app）安定化",
+      "2025年10月: @ag-ui/core 0.0.36、@ag-ui/client 0.0.37リリース",
       "In Review: Concurrent Tool Calls（並行ツール呼び出し）"
     ],
     "roadmap_highlights": [
@@ -149,7 +151,8 @@
       "新プラットフォーム統合検討中（AWS Strands, Langroid, n8n, Bedrock）",
       "マルチモーダル強化（音声サポート検討中）",
       "並行ツール呼び出し（In Review）"
-    ]
+    ],
+    "notes": "イベント数について: 公式では「~16 standard event types」と記載。Draft Events（Activity/Reasoning/Meta/Modified Lifecycle）は提案段階で正式採用未確定。学習時は16種のコアイベントを基本として扱うことを推奨"
   },
   "sources": [
     "https://github.com/ag-ui-protocol/ag-ui",
@@ -160,46 +163,68 @@
     "https://github.com/orgs/ag-ui-protocol/projects/1"
   ],
   "learning_products": {
-    "beginner": {
-      "name": "即答AIチャットボット",
-      "description": "テキスト入力→TEXT_MESSAGE_CONTENTをストリーミング表示→RUN_FINISHEDで完了",
-      "core_concepts": [
-        "17種イベントのうち最小構成（RUN_STARTED/FINISHED、TEXT_MESSAGE_START/CONTENT/END）",
-        "Frontend（React + AgentClient）とBackend（Node.js + Proxy）の2層構造",
-        "npx create-ag-ui-app@latestでの環境構築とnpm run dev"
-      ],
-      "why": "AG-UIのコアアーキテクチャとイベント駆動の基礎を、ツールやステート管理抜きで体感できる",
-      "duration": "2-3時間",
-      "difficulty": "★☆☆",
-      "events_count": 5
-    },
-    "core": {
-      "name": "天気予報アシスタント（ツール統合）",
-      "description": "「東京の天気は?」→エージェントがTOOL_CALL（天気API）→結果をテキストで返す",
-      "core_concepts": [
-        "TOOL_CALL_START/ARGS/END/RESULTの4イベントペア",
-        "Start-Args-End-Resultパターンの実装とIDマッチング",
-        "Middleware層（@ag-ui/langgraphまたは手動実装）",
-        "ローディング表示とエラーハンドリング"
-      ],
-      "why": "AG-UIの最頻出ユースケース（ツール実行のUI可視化）を習得、実務で即使える",
-      "duration": "4-6時間",
-      "difficulty": "★★☆",
-      "events_count": 9
-    },
-    "applied": {
-      "name": "タスク管理エージェント（ステート + Generative UI + Human-in-the-loop）",
-      "description": "ユーザーが「買い物リスト作成」→エージェントがSTATE_SNAPSHOTでリスト同期、「カートに追加」→TOOL_CALL_START前にCUSTOMイベントで確認UI生成→ユーザー承認→実行、リアルタイムで複数クライアント間でステート共有（STATE_DELTA）",
-      "core_concepts": [
-        "STATE_SNAPSHOT/DELTAでの状態同期",
-        "CUSTOMイベントで動的UIコンポーネント（ボタン/チェックボックス）生成",
-        "Human-in-the-loopパターン（ユーザー承認フロー）",
-        "マルチクライアント対応（WebSocket推奨）"
-      ],
-      "why": "AG-UIの差別化要素3つ（共有ステート、Generative UI、対話型確認）を全て習得、プロダクションレベルの設計力を養う",
-      "duration": "8-12時間",
-      "difficulty": "★★★",
-      "events_count": 15
-    }
+    "beginner": [
+      {
+        "name": "即答AIチャットボット",
+        "description": "テキスト入力→TEXT_MESSAGE_CONTENTをストリーミング表示→RUN_FINISHEDで完了",
+        "core_concepts": [
+          "16種コアイベントのうち最小構成（RUN_STARTED/FINISHED、TEXT_MESSAGE_START/CONTENT/END）",
+          "Frontend（React + AgentClient）とBackend（Node.js + Proxy）の2層構造",
+          "npx create-ag-ui-app@latestでの環境構築とnpm run dev"
+        ],
+        "why": "AG-UIのコアアーキテクチャとイベント駆動の基礎を、ツールやステート管理抜きで体感できる",
+        "duration": "2-3時間",
+        "difficulty": "★☆☆",
+        "events_count": 5
+      }
+    ],
+    "core": [
+      {
+        "name": "天気予報アシスタント（ツール統合）",
+        "description": "「東京の天気は?」→エージェントがTOOL_CALL（天気API）→結果をテキストで返す",
+        "core_concepts": [
+          "TOOL_CALL_START/ARGS/END/RESULTの4イベントペア",
+          "Start-Args-End-Resultパターンの実装とIDマッチング",
+          "Middleware層（@ag-ui/langgraphまたは手動実装）",
+          "ローディング表示とエラーハンドリング"
+        ],
+        "why": "AG-UIの最頻出ユースケース（ツール実行のUI可視化）を習得、実務で即使える",
+        "duration": "4-6時間",
+        "difficulty": "★★☆",
+        "events_count": 9
+      }
+    ],
+    "applied": [
+      {
+        "name": "タスク管理エージェント（ステート + Generative UI + Human-in-the-loop）",
+        "description": "ユーザーが「買い物リスト作成」→エージェントがSTATE_SNAPSHOTでリスト同期、「カートに追加」→TOOL_CALL_START前にCUSTOMイベントで確認UI生成→ユーザー承認→実行、リアルタイムで複数クライアント間でステート共有（STATE_DELTA）",
+        "core_concepts": [
+          "STATE_SNAPSHOT/DELTAでの状態同期",
+          "CUSTOMイベントで動的UIコンポーネント（ボタン/チェックボックス）生成",
+          "Human-in-the-loopパターン（ユーザー承認フロー）",
+          "マルチクライアント対応（WebSocket推奨）"
+        ],
+        "why": "AG-UIの差別化要素3つ（共有ステート、Generative UI、対話型確認）を全て習得、プロダクションレベルの設計力を養う",
+        "duration": "8-12時間",
+        "difficulty": "★★★",
+        "events_count": 15
+      },
+      {
+        "name": "季節の振り返りジャーナルエージェント（ステート + Generative UI + Human-in-the-loop + 外部API統合）",
+        "description": "ユーザーが日々の出来事を記録→STATE_SNAPSHOTでジャーナルデータ同期、エージェントが季節API（天気/暦）と連携して「春分の日なので3ヶ月の振り返りをしませんか？」と提案→TOOL_CALL（記録分析/要約生成）→CUSTOMイベントで季節感のあるタイムラインUIや振り返りカード生成→「この記録を春のアルバムに追加しますか？」とHuman-in-the-loop確認→承認後にSTATE_DELTAで更新、複数デバイス間でリアルタイム同期",
+        "core_concepts": [
+          "STATE_SNAPSHOT/DELTAでの永続的なジャーナルデータ同期",
+          "TOOL_CALL（季節判定API/記録分析API/要約生成API）の多段階統合",
+          "CUSTOMイベントで季節テーマ別の動的UI生成（タイムライン/カード/アルバム）",
+          "Human-in-the-loopパターン（記録保存/アルバム追加の確認フロー）",
+          "時系列データの管理とフィルタリング（季節/月/年単位）",
+          "マルチクライアント対応（WebSocket推奨）"
+        ],
+        "why": "AG-UIの全機能（共有ステート、Generative UI、対話型確認）に加え、外部API統合と時系列データ管理を習得、長期的なデータ蓄積と季節に応じた振り返り体験の設計力を養う",
+        "duration": "10-14時間",
+        "difficulty": "★★★",
+        "events_count": 17
+      }
+    ]
   }
 }
